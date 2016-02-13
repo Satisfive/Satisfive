@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express = require('express')
   , http = require('http')
   , sparkpost = require('./sparkpost')
@@ -5,7 +7,6 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
-
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -39,7 +40,6 @@ app.post('/users', function(req, res){
   } else {
     res.send(400);
   }
-
 });
 
 
