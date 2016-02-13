@@ -24,4 +24,4 @@ var txResponseHandler = function txResponseHandler(err, data) {
 		console.log(data);
 	}
 }; // Simplify sending transmission and response handling using the SparkPost Node SDK Transmission request
-client.transmissions.send(txObject, txResponseHandler);
+//client.transmissions.send(txObject, txResponseHandler);

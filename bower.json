@@ -1,0 +1,31 @@
+{
+  "name": "satisfive",
+  "description": "Emails stuff",
+  "main": "index.js",
+  "authors": [
+    "Dorian",
+    "Eli",
+    "Wale"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "emails",
+    "machine",
+    "learning",
+    "love",
+    "sadness"
+  ],
+  "homepage": "https://github.com/Satisfive/Satisfive",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-design": "^0.5.8"
+  }
+}
