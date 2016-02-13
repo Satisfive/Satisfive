@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Satisfive/Satisfive#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "sparkpost": "^1.1.0"
   }
 }
