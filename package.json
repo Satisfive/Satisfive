@@ -1,0 +1,26 @@
+{
+  "name": "satisfive",
+  "version": "1.0.0",
+  "description": "Emails stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satisfive/Satisfive.git"
+  },
+  "keywords": [
+    "emails",
+    "machine",
+    "learning",
+    "love",
+    "sadness"
+  ],
+  "author": "Dorian,Eli,Wale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Satisfive/Satisfive/issues"
+  },
+  "homepage": "https://github.com/Satisfive/Satisfive#readme"
+}
