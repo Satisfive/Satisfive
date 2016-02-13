@@ -1,0 +1,11 @@
+POST /api/emails
+
+This is the webhook for SparkPost
+
+GET /api/emails/:uuid
+
+Gets email metadata as json
+
+GET /api/users/:email
+
+Get's array of emails metadata as json
