@@ -19,8 +19,6 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-
-
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
@@ -36,7 +34,7 @@ app.get('/api/emails/:uuid', function(req, res){
 
 app.post('/users', function(req, res){
   var user;
-  if (user = User.find(req.params.email)) {
+  if (user = db.User.find(req.params.email)) {
     res.send(200);
   } else {
     res.send(400);
@@ -44,12 +42,23 @@ app.post('/users', function(req, res){
 
 });
 
+
+var data;
+app.post('/webhook', function(req, res){
+  res.send(200);
+  data=req;
+});
+
+app.post('/get', function(req, res){
+  res.send(data);
+});
+
 app.get('/users/:email', function(req, res){
-  var user = User.find(req.params.email);
+  var user = db.User.find(req.params.email);
   if (user) {
     res.json(user.getEmails());
   } else {
-    res.send(400);
+    res.send(404);
   }
 });
 
