@@ -44,13 +44,10 @@ app.post('/users', function(req, res){
 
 
 app.post('/webhook', function(req, res){
+  // do sentiment analysis
   res.send(200);
-  data=req.body;
 });
 
-app.get('/webhook', function(req, res){
-  res.send(data);
-});
 
 app.get('/users/:email', function(req, res){
   var user = db.User.find(req.params.email);
