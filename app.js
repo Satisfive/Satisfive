@@ -43,7 +43,12 @@ app.post('/users', function(req, res){
 });
 
 app.get('/users/:email', function(req, res){
-  res.send('s');
+  var user = User.find(req.params.email);
+  if (user) {
+    res.json(user.getEmails());
+  } else {
+    res.send(400);
+  }
 });
 
 http.createServer(app).listen(app.get('port'), function(){
