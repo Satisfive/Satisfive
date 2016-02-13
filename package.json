@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Satisfive/Satisfive/issues"
   },
-  "homepage": "https://github.com/Satisfive/Satisfive#readme"
+  "homepage": "https://github.com/Satisfive/Satisfive#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
