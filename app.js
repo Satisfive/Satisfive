@@ -43,10 +43,9 @@ app.post('/users', function(req, res){
 });
 
 
-var data;
 app.post('/webhook', function(req, res){
   res.send(200);
-  data=req;
+  data=req.body;
 });
 
 app.get('/webhook', function(req, res){
