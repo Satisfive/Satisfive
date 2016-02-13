@@ -49,7 +49,7 @@ app.post('/webhook', function(req, res){
   data=req;
 });
 
-app.post('/get', function(req, res){
+app.get('/webhook', function(req, res){
   res.send(data);
 });
 
