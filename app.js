@@ -52,7 +52,7 @@ app.post('/webhook', function(req, res){
     msg.content.headers.forEach(function(h){
       for(k in h) headers[k] = h[k];
     });
-    msg.content.from = msg.content.friendly_from:
+    msg.content.from = msg.content.friendly_from;
     msg.content.headers = headers;
     msg = new sparkpost.Message({
         content: msg.content
