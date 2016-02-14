@@ -38,5 +38,8 @@ module.exports.getUserByEmail = function(email_uuid) {
   return User.findOne({ where: { personnal_email: email_uuid } });
 };
 
+User.sync();
+Email.sync();
+
 module.exports.User = User
 module.exports.Email = Email
