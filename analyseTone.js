@@ -7,12 +7,17 @@ var tone_analyzer = watson.tone_analyzer({
   version_date: '2016-02-11'
 });
 
+// Returns a promise, example:
+//
+//     analyseTone("Wow, greeeaat!!!!").then(function(e) { console.log(e) })
 module.exports.analyseTone = function(text) {
-  tone_analyzer.tone({ text: text },
-    function(err, tone) {
-      if (err)
-        return err;
-      else
-        return tone;
+  return new Promise(function(resolve, reject) {
+    tone_analyzer.tone({ text: text },
+      function(err, tone) {
+        if (err)
+          reject(err);
+        else
+          resolve(tone);
+    });
   });
 };

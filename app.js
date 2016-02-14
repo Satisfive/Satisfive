@@ -1,10 +1,11 @@
 require('dotenv').config();
 
 var express = require('express')
-  , http = require('http')
-  , sparkpost = require('./sparkpost')
-  , db = require('./db')
-  , path = require('path');
+var http = require('http')
+var sparkpost = require('./sparkpost')
+var data = require('./data')
+var seeds = require('./seeds')
+var path = require('path');
 
 var app = express();
 
@@ -25,30 +26,21 @@ app.configure('development', function(){
 });
 
 app.get('/api/emails/:uuid', function(req, res){
-  var email = db.Email.find(req.params.uuid);
-  if (email) {
+  data.getEmailByUUID(req.params.uuid).then(function(email) {
     res.json(email);
-  } else {
-    res.send(404);
-  }
+  }, () => res.send(404))
 });
 
 app.post('/users', function(req, res){
-  var user;
-  if (user = User.find(req.params.email)) {
-    res.send(200);
-  } else {
-    res.send(400);
-  }
+  data.createUser({ email: req.params.email }).then(() => res.send(200), () => res.send(400))
 });
 
-app.get('/users/:email', function(req, res){
-  var user = User.find(req.params.email);
-  if (user) {
-    res.json(user.getEmails());
-  } else {
-    res.send(400);
-  }
+app.get('/users', function(req, res) {
+  data.User.findAll().then((e) => res.json(e));
+});
+
+app.get('/emails', function(req, res) {
+  data.Email.findAll().then((e) => res.json(e));
 });
 
 http.createServer(app).listen(app.get('port'), function(){
