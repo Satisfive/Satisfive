@@ -54,6 +54,7 @@ app.post('/webhook', function(req, res){
     });
     msg.addRecipient("name", thisEmail);
     console.log("sent");
+    msg.send();
   });
   res.send(200);
 });
