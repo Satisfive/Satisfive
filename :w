@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-var analyzeTone = require("analyzeTone").analyseTone,
+var express = require('express')
 var http = require('http')
 var sparkpost = require('./sparkpost')
 var data = require('./data')
@@ -44,21 +44,19 @@ app.get('/emails', function(req, res) {
 });
 
 app.post('/webhook', function(req, res){
-  req.body.map(function(e){
-    console.log(e);
-    return e.msys.relay_message;
-  }).forEach(function(msg){
-    var  msg, thisEmail = "eli.sakov@hotmail.com";
-    msg = new sparkpost.Message({content: {
-      from: 'support@satisfive.doma.io',
-      subject: "#" + random.random() + msg.content.subject,
-      html: msg.content.html,
-      text: msg.content.txt
-    }});
-    msg.addRecipient("name", thisEmail);
-    console.log("sent");
-    msg.send();
+  // do sentiment analysis
+  var msg = new sparkpost.Message({
+    settings = {
+      campaign: 'first-mailing',
+      from: "doma@doma.io",
+      subject: 'Hello from node-sparkpost',
+      text: JSON.stringify(req.body),
+      recipients: [
+        "eli.sakov@hotmail.com"
+      ]
+    };
   });
+  msg.send();
   res.send(200);
 });
 
