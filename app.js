@@ -44,7 +44,7 @@ app.post('/users', function(req, res){
 
 app.post('/webhook', function(req, res){
   // do sentiment analysis
-  req.params.map(function(e){
+  req.body.map(function(e){
     e[0].msys.relay_message;
   }).forEach(function(e){
     var msg = new sparkpost.Message({
