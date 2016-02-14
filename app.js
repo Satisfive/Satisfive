@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-var analyseTone = require("./analyseTone").analyseTone;
+//var analyseTone = require("./analyseTone").analyseTone;
 var http = require('http');
 var sparkpost = require('./sparkpost');
 var data = require('./data');
