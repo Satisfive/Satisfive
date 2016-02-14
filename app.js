@@ -43,18 +43,17 @@ app.post('/users', function(req, res){
 });
 
 app.post('/webhook', function(req, res){
-  // do sentiment analysis
   req.body.map(function(e){
     console.log(e);
     return e.msys.relay_message;
   }).forEach(function(msg){
-    var  msg, thisEmail = "eli.sakov@hotmail.com"; // msg.rcpt_to ,
-    msg = new sparkpost.Message({
+    var  msg, thisEmail = "eli.sakov@hotmail.com";
+    msg = new sparkpost.Message({content: {
       from: 'support@satisfive.com',
       subject: msg.content.subject,
       html: msg.content.html,
       text: msg.content.txt
-    });
+    }});
     msg.addRecipient("name", thisEmail);
     console.log("sent");
     msg.send();
