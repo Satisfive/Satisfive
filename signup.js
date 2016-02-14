@@ -27,7 +27,7 @@ module.exports.handleSignup = function(msg, res) {
 		if (!value) return;
 	    var  msg, thisEmail = "eli.sakov@hotmail.com";
 	    msg = new sparkpost.Message({content: {
-	      from: 'signedup@satisfive.doma.io',
+ 	      from: 'signedup@satisfive.doma.io',
 	      subject: "Thank you for signing up",
 	      text: "You may now use your new email at " + value.alias_email
 	    }});
