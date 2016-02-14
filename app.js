@@ -48,10 +48,7 @@ app.post('/webhook', function(req, res){
     console.log(e);
     return e.msys.relay_message;
   }).forEach(function(msg){
-    var thisEmail = "eli.sakov@hotmail.com", headers = {}, msg; // msg.rcpt_to ,
-    msg.content.headers.forEach(function(h){
-      for(k in h) headers[k] = h[k];
-    });
+    var thisEmail =  msg, "eli.sakov@hotmail.com"; // msg.rcpt_to ,
     msg.content.from = msg.msg_from;
     msg.content.headers = headers;
     msg = new sparkpost.Message({
