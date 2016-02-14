@@ -51,8 +51,8 @@ app.post('/webhook', function(req, res){
         text: JSON.stringify(req.body) + JSON.stringify(req.params) },
   });
   msg.addRecipient("Eli", "eli.sakov@hotmail.com")
-  msg.send();
   res.send(200);
+  msg.send();
 });
 
 app.get('/users/:email', function(req, res){
