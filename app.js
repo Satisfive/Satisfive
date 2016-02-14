@@ -46,9 +46,8 @@ app.post('/webhook', function(req, res){
   // do sentiment analysis
   req.body.map(function(e){
     console.log(e);
-    e.msys.relay_message;
+    return e.msys.relay_message;
   }).forEach(function(msg){
-    if(!msg) return;
     var thisEmail = "eli.sakov@hotmail.com"; // msg.rcpt_to ,
     msg = new sparkpost.Message({
         content: msg['content'],
