@@ -47,7 +47,7 @@ app.post('/webhook', function(req, res){
   console.log(req.body)
   console.log(req.params)
   req.body.map(function(e){
-    e[0].msys.relay_message;
+    e.msys.relay_message;
   }).forEach(function(e){
     var msg = new sparkpost.Message({
         content: {
