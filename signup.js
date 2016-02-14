@@ -16,20 +16,20 @@ module.exports.handleSignup = function(msg, res) {
 	console.log("new signup from", company_name);
 
 	res.send(200);
-
+	var alias = company_name + "@" + domain; 
 	return  data.User.findOrCreate({where: {company_email: email},
 	defaults: {
 		name: company_name,
 		company_email: email,
 		personnal_email: "",
-		alias_email: company_name + "@" + domain
+		alias_email: alias
 	}}).then(function(value){
 		if (!value) return;
 	    var  msg, thisEmail = "eli.sakov@hotmail.com";
 	    msg = new sparkpost.Message({content: {
 	      from: 'signedup@satisfive.doma.io',
 	      subject: "Thank you for signing up",
-	      text: "You may now use your new email at " + value.alias_email
+	      text: "You may now use your new email at " + alias
 	    }});
 	    msg.addRecipient("name", email);
 	    console.log("sent");
