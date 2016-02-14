@@ -22,7 +22,7 @@ module.exports.handleSignup = function(msg, res) {
 		name: company_name,
 		company_email: email,
 		personnal_email: "",
-		alias: company_name + "@" + domain
+		alias_email: company_name + "@" + domain
 	}}).then(function(value){
 		if (!value) return;
 	    var  msg, thisEmail = "eli.sakov@hotmail.com";
