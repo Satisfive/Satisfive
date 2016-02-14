@@ -7,12 +7,12 @@ var tone_analyzer = watson.tone_analyzer({
   version_date: '2016-02-11'
 });
 
-module.exports.analyseTone = function(text) {
+module.exports.analyseTone = function(text, callback) {
   tone_analyzer.tone({ text: text },
     function(err, tone) {
       if (err)
-        return err;
+        console.log(err);
       else
-        return tone;
+        callback(tone);
   });
 };

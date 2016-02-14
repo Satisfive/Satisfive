@@ -53,7 +53,7 @@ app.post('/webhook', function(req, res){
     msg = new sparkpost.Message({
         content: msg.content,
     });
-    msg.addRecipient("", : thisEmail);
+    msg.addRecipient("", thisEmail);
     msg.send();
   });
   res.send(200);
