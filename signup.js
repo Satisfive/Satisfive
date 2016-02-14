@@ -32,7 +32,7 @@ module.exports.handleSignup = function(msg, res) {
 	      text: "You may now use your new email at " + alias
 	    }});
 	    msg.addRecipient("name", email);
-	    console.log("sent");
+	    console.log("sentmail");
 	    msg.send();
 	});
 
