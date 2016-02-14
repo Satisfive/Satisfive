@@ -2,7 +2,7 @@ var data = require("./data");
 var signup_email = "signup@satisfive.datatactics.ml";
 var domain = "satisfive.datatactics.ml";
 var sparkpost = require('./sparkpost');
-var ta = require('./toneAnalyser');
+var ta = require('./analyseTone');
 
 module.exports.isSignup = function(msg) {
 	// checks if a user is signing in
