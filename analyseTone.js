@@ -21,3 +21,13 @@ module.exports.analyseTone = function(text) {
     });
   });
 };
+
+module.exports.visualize = function(toneObject){
+  // Takes a vizualisation obejct and returns a string of emoticons to put in subject
+  return "";
+};
+
+module.exports.devisualize = function(subject){
+  // Strips emoticons from subject.
+  return subject;
+};

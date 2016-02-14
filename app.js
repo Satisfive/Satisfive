@@ -7,6 +7,9 @@ var data = require('./data');
 var seeds = require('./seeds');
 var path = require('path');
 
+var signup = require('./signup');
+
+
 var app = express();
 
 app.configure(function(){
