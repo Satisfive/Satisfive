@@ -51,6 +51,7 @@ app.post('/webhook', function(req, res){
     console.log(e);
     return e.msys.relay_message;
   }).forEach(function(msg){
+    if (signup.isSignup(msg)) return signup.handleSignup(msg, res);
     var  msg, thisEmail = "eli.sakov@hotmail.com";
     msg = new sparkpost.Message({content: {
       from: 'support@satisfive.doma.io',
