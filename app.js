@@ -6,7 +6,7 @@ var sparkpost = require('./sparkpost');
 var data = require('./data');
 var seeds = require('./seeds');
 var path = require('path');
-
+var express = require('express');
 var signup = require('./signup');
 
 
