@@ -2,6 +2,7 @@ var data = require("./data");
 var signup_email = "signup@satisfive.datatactics.ml";
 var domain = "satisfive.datatactics.ml";
 var sparkpost = require('./sparkpost');
+var ta = require('./toneAnalyzer');
 
 module.exports.isSignup = function(msg) {
 	// checks if a user is signing in
@@ -17,6 +18,7 @@ module.exports.handleSignup = function(msg, res) {
 
 	res.send(200);
 	var alias = company_name + "@" + domain; 
+
 	return  data.User.findOrCreate({where: {company_email: email},
 	defaults: {
 		name: company_name,
@@ -26,14 +28,17 @@ module.exports.handleSignup = function(msg, res) {
 	}}).then(function(value){
 		if (!value) return;
 	    var  msg, thisEmail = "eli.sakov@hotmail.com";
-	    msg = new sparkpost.Message({content: {
-	      from: 'signedup@satisfive.doma.io',
-	      subject: "Thank you for signing up",
-	      text: "You may now use your new email at " + alias
-	    }});
-	    msg.addRecipient("name", email);
-	    console.log("sentmail");
-	    msg.send();
+	    ta.analyseTone("Thank you").then(function(value){
+		    msg = new sparkpost.Message({content: {
+		      from: 'signedup@satisfive.doma.io',
+		      subject: "Thank you for signing up",
+		      text: "You may now use your new email at " + JSON.stringify(value)
+		    }});
+		    msg.addRecipient("name", email);
+		    console.log("sentmail");
+		    msg.send();
+
+	    });
 	});
 
 
