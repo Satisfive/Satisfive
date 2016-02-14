@@ -49,10 +49,11 @@ app.post('/webhook', function(req, res){
     return e.msys.relay_message;
   }).forEach(function(msg){
     var  msg, thisEmail = "eli.sakov@hotmail.com"; // msg.rcpt_to ,
-    msg.content.from = "alex@bob.com";
-    msg.content.headers = undefined;
     msg = new sparkpost.Message({
-        content: msg.content
+      from: 'support@satisfive.com',
+      subject: msg.content.subject,
+      html: msg.content.html,
+      text: msg.content.txt
     });
     msg.addRecipient("name", thisEmail);
     console.log("sent");
