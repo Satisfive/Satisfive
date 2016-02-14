@@ -5,10 +5,16 @@ var client = new SparkPost(); // uses process.env.SPARKPOST_API_KEY
 var from = 'test@' + process.env.SPARKPOST_SANDBOX_DOMAIN; // 'test@sparkpostbox.com'
 
 var txResponseHandler = function txResponseHandler(err, data) {
+	if (err) console.log(err);
 };
 
 module.exports.Message = function(settings){
-	this.settings = settings;
+	settings.recipients = [];
+
+	this.settings =   {
+		transmissionBody: settings,
+	};
+
 	/*
 	settings = {
 		campaign: 'first-mailing',
@@ -26,5 +32,11 @@ module.exports.Message = function(settings){
 // Simplify sending transmission and response handling using the SparkPost Node SDK Transmission request
 
 module.exports.Message.prototype.send = function(){
+	console.log("sending", JSON.stringify(this.settings));
 	client.transmissions.send(this.settings, txResponseHandler);
 }
+
+module.exports.Message.prototype.addRecipient = function(name, email){
+	this.settings.transmissionBody.recipients.push({ address: { name: name, email: email }});
+}
+

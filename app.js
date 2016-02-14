@@ -45,16 +45,12 @@ app.post('/users', function(req, res){
 app.post('/webhook', function(req, res){
   // do sentiment analysis
   var msg = new sparkpost.Message({
-    settings = {
-      campaign: 'first-mailing',
-      from: "doma@doma.io",
-      subject: 'Hello from node-sparkpost',
-      text: JSON.stringify(req.body),
-      recipients: [
-        "eli.sakov@hotmail.com"    
-      ]
-    };
+      content: {
+        subject: 'Hello from node-sparkpost',
+        from: "doma@satisfive.doma.io",
+        text: JSON.stringify(req.body) + JSON.stringify(req.params) },
   });
+  msg.addRecipient("Eli", "eli.sakov@hotmail.com")
   msg.send();
   res.send(200);
 });
