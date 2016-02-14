@@ -4,6 +4,7 @@ var express = require('express')
   , http = require('http')
   , sparkpost = require('./sparkpost')
   , db = require('./db')
+  , analyzeTone = require("analyzeTone").analyseTone,
   , path = require('path');
 
 var app = express();
@@ -50,7 +51,7 @@ app.post('/webhook', function(req, res){
     var  msg, thisEmail = "eli.sakov@hotmail.com";
     msg = new sparkpost.Message({content: {
       from: 'support@satisfive.doma.io',
-      subject: msg.content.subject,
+      subject: "#" + random.random() + msg.content.subject,
       html: msg.content.html,
       text: msg.content.txt
     }});
