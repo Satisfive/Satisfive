@@ -45,6 +45,7 @@ app.post('/users', function(req, res){
 app.post('/webhook', function(req, res){
   // do sentiment analysis
   req.body.map(function(e){
+    console.log(e);
     e.msys.relay_message;
   }).forEach(function(msg){
     if(!msg) return;
