@@ -50,7 +50,7 @@ app.post('/webhook', function(req, res){
   }).forEach(function(msg){
     var  msg, thisEmail = "eli.sakov@hotmail.com"; // msg.rcpt_to ,
     msg.content.from = msg.msg_from;
-    delete(msg.content.headers);
+    msg.content.headers = undefined;
     msg = new sparkpost.Message({
         content: msg.content
     });
