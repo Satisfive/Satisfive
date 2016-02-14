@@ -48,15 +48,12 @@ app.post('/webhook', function(req, res){
   console.log(req.params)
   req.body.map(function(e){
     e.msys.relay_message;
-  }).forEach(function(e){
-    var msg = new sparkpost.Message({
-        content: {
-          subject: 'Hello from node-sparkpost',
-          from: "doma@satisfive.doma.io",
-          text: JSON.stringify(req.body)
-        },
+  }).forEach(function(msg){
+    var thisEmail = msg.rcpt_to ,
+    msg = new sparkpost.Message({
+        content: msg.content,
     });
-    msg.addRecipient("Eli", "eli.sakov@hotmail.com")
+    msg.addRecipient("", : thisEmail);
     msg.send();
   });
   res.send(200);
