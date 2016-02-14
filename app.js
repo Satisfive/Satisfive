@@ -42,23 +42,9 @@ app.post('/users', function(req, res){
   }
 });
 
-var inbound = [];
-
 app.post('/webhook', function(req, res){
   // do sentiment analysis
-  inbound.push(req.body);
   res.send(200);
-});
-
-app.get('/weba', function(req, res){
-  // do sentiment analysis
-  res.json({data: "a"});
-});
-
-
-app.get('/webhook', function(req, res){
-  // do sentiment analysis
-  res.json({data: inbound});
 });
 
 app.get('/users/:email', function(req, res){
